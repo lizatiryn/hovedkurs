@@ -1,0 +1,76 @@
+*{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(231, 209, 231);
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+}
+h1{
+    color: rgb(117, 111, 145);
+}
+.top-grid{
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 11% 43%;
+    right: -46.5%;
+}
+.top-grid select {
+    width: 20%;
+    position: relative;
+    right: -50%;
+}
+
+#app input {
+    background-color: rgba(185, 185, 185, 0.5);
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 10px;
+}
+#app input:focus{
+    background-color: rgb(233, 217, 248);
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 10px;
+}
+.add-btn{
+    font-size: 25px;
+    padding: 0 10px ;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.add-btn:hover{
+    background-color: rgba(186, 85, 211, 0.15);
+    color: rgb(206, 134, 0);
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+}
+li {
+    display: grid;
+    grid-template-columns: 40px 1fr 20px;
+    border: 2px dashed rgba(128, 0, 128, 0.473);
+    padding: 2px;
+    border-radius: 10px
+}
+li span{
+    font-size: 20px;
+}
+li button{
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+li button:hover{
+    color: orange;
+}
