@@ -1,0 +1,15 @@
+@keyframes timerani {
+    0% {background-color: rgb(101, 141, 78); width: 500px;}
+    100% {background-color: rgb(255, 0, 0); width: 5px;}
+}
+
+#timer {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 10px;
+    animation-name: timerani;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    background-color: rgb(141, 78, 115)
+}
