@@ -1,41 +1,29 @@
 startScreen()
 
 function startScreen(){
+    fetchQuestions()
     app.innerHTML = /*html*/ `
+        <h1>Your daily random quiz</h1>
         <button onclick = 'showQuestion()'>PLAY</button>
     `
 }
 
 function showQuestion(){
 
-        if(numberOfQuestion-1 <= data.results.length){
-            // timeLeft = 10;
             app.innerHTML = /*html*/ `
             <div class = 'topbar'><span>Points: ${points}</span> <div id = 'timer'> </div></div>
+            <div>Question ${numberOfQuestion}</div>
             <div class = 'question'>${data.results[numberOfQuestion-1].question}</div>
 
             <div class = 'answers'>
                 ${showAnswers(numberOfQuestion - 1)}            
-               </div>
+            </div>
         `
-        setTimeout(()=>{
-            if(timeLeft == -1){
-                numberOfQuestion++
-                showQuestion()
-            }
-            else{
-                ranOutOfTime()
-                // setTimeout(showQuestion(), '1000')
-            }
-        }, '10000')
-            }
-        else return;
-    showResults()
-}
-
-function ranOutOfTime(){
-    app.innerHTML = /*html*/ `<div>You ran out of time</div>`
-    numberOfQuestion++
+        setTimeout(()=>{    
+            clicked = false
+            if (!clicked){
+                    ranOutOfTime()   }
+    }, '10000')
 }
 
 function showAnswers(ind){
@@ -48,23 +36,26 @@ function showAnswers(ind){
     for(let i = 0; i < amountOfAnswers; i++){
         if (i === posOfRightAnswer){
             html += /*html*/ ` 
-              <span onclick = 'correctAnswer("corr")'>${quest.correct_answer}</span>
+              <span class = 'answer' onclick = 'correctAnswer("corr")'>!!!!!!!${quest.correct_answer}</span>
             `
         } else if (i < amountOfAnswers - 1){
               html += /*html*/ ` 
-              <span onclick = 'correctAnswer("incorr")'>${quest.incorrect_answers[i]}</span>
+              <span class = 'answer' onclick = 'correctAnswer("incorr")'>${quest.incorrect_answers[i]}</span>
             `
         } else {
             html += /*html*/ ` 
-              <span onclick = 'correctAnswer("incorr")'>${quest.incorrect_answers[posOfRightAnswer]}</span>
+              <span class = 'answer' onclick = 'correctAnswer("incorr")'>${quest.incorrect_answers[posOfRightAnswer]}</span>
             `
         }
     }
     return html;
 }
 
-
 function showResults(){
+    app.innerHTML = /*html*/ `
+        <div>You got ${points}/10 right. Wanna play again?</div>
+        <button onclick = 'startScreen()'>Yes</button>
+    `
 
 }
 

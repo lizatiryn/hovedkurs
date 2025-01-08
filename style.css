@@ -3,6 +3,10 @@
     100% {background-color: rgb(255, 0, 0); width: 5px;}
 }
 
+body{
+    background-color: rgb(49, 49, 49);
+}
+
 #timer {
     position: absolute;
     right: 10px;
@@ -12,4 +16,39 @@
     animation-duration: 10s;
     animation-timing-function: linear;
     background-color: rgb(141, 78, 115)
+}
+
+.answer{
+    height: 50px;
+    width: 200px;
+    background-color: darkorange;
+    display: block;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+#app button {
+    position: absolute;
+    font-size: 50px;
+    height: 60px;
+    top: 33%;
+    left: 38%;
+    right: 38%;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+
+}
+
+#app h1 {
+    color: white;
+    position: absolute;
+    left: 40%;
+    right: 38%;
+}
+
+#app button:hover{
+    background-color: rgb(50, 50, 50);
+    box-shadow: inset 0 0 5px 5px rgb(19, 20, 19);
+
 }

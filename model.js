@@ -4,9 +4,9 @@ let points = 0
 let data
 let numberOfQuestion = 1
 let timeLeft = 10
+let clicked = true
 
 
-fetchQuestions()
 async function fetchQuestions() {
     try{
         const response = await fetch('https://opentdb.com/api.php?amount=10')
