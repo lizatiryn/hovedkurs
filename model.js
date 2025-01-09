@@ -13,5 +13,5 @@ let posts = [
 		time: '09/01/2025 13:46'
 	}
 ]
-	
+let addpost = null
 let currentuser = users[0].name

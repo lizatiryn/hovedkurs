@@ -28,5 +28,24 @@ function printPosts(){
 }
 
 function addPostView(){
-	
+	if(!addpost){
+		app.innerHTML += /*html*/ `
+			<div id = 'add-post'>
+				<div>
+					<span onclick= 'close()'>X</span>
+					<input placeholder = 'Share your thoughts'>
+					<button onclick = 'addPost()'>Add</button>
+				</div>
+			</div>
+		`
+
+		addpost = document.getElementById('add-post')
+	}
+}
+
+function close(){
+	if(addpost){
+		addpost.remove()
+		adpost = null
+	}
 }

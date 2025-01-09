@@ -1,5 +1,6 @@
 body{
 	background-color: aliceblue;
+	margin: 0;
 }
 
 .topbar{
@@ -68,4 +69,30 @@ body{
 
 .post-bot{
 	align-self: self-end;
+}
+
+#add-post{
+	position: absolute;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.08);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+#add-post div{
+	display: flex;
+	flex-direction: column;
+	background-color: lightsteelblue;
+	width: 500px;
+	
+}
+
+#add-post div input{
+	width: 90%;
+	height: 300px;
+	align-self: center;
+	
 }
