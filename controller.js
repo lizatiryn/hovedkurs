@@ -3,11 +3,15 @@ function correctAnswer(answer){
         points++
         numberOfQuestion++
         clicked = true
-        showQuestion()
+        if(numberOfQuestion-1 < data.results.length){
+            showQuestion() 
+        } else showResults()
     } else if (answer === 'incorr'){
         numberOfQuestion++
         clicked = true
-        showQuestion()
+        if(numberOfQuestion-1 < data.results.length){
+            showQuestion() 
+        } else showResults()
     }
 }
 

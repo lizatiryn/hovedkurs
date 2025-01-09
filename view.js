@@ -1,7 +1,10 @@
-startScreen()
+fetchQuestions()
 
 function startScreen(){
-    fetchQuestions()
+    if (!data.results) {
+         return
+     }
+
     app.innerHTML = /*html*/ `
         <h1>Your daily random quiz</h1>
         <button onclick = 'showQuestion()'>PLAY</button>
@@ -9,11 +12,13 @@ function startScreen(){
 }
 
 function showQuestion(){
-
             app.innerHTML = /*html*/ `
             <div class = 'topbar'><span>Points: ${points}</span> <div id = 'timer'> </div></div>
-            <div>Question ${numberOfQuestion}</div>
-            <div class = 'question'>${data.results[numberOfQuestion-1].question}</div>
+            
+            <div class = 'question'>
+            <p>Question ${numberOfQuestion}</p>
+
+            ${data.results[numberOfQuestion-1].question}</div>
 
             <div class = 'answers'>
                 ${showAnswers(numberOfQuestion - 1)}            
@@ -30,7 +35,6 @@ function showAnswers(ind){
     let html = ''
     const quest = data.results[ind]
     const amountOfAnswers = quest.incorrect_answers.length + 1
-
     let posOfRightAnswer = Math.floor(Math.random() * amountOfAnswers)
 
     for(let i = 0; i < amountOfAnswers; i++){
@@ -54,10 +58,11 @@ function showAnswers(ind){
 function showResults(){
     app.innerHTML = /*html*/ `
         <div>You got ${points}/10 right. Wanna play again?</div>
-        <button onclick = 'startScreen()'>Yes</button>
+        <button onclick = 'fetchQuestions()'>Yes</button>
     `
 
 }
+
 
 
 //  {

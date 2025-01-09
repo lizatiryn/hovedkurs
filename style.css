@@ -5,6 +5,7 @@
 
 body{
     background-color: rgb(49, 49, 49);
+    color: white;
 }
 
 #timer {
@@ -17,14 +18,22 @@ body{
     animation-timing-function: linear;
     background-color: rgb(141, 78, 115)
 }
-
+.answers{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 300px 300px;
+    width: 70%;
+}
 .answer{
-    height: 50px;
+    height: max-content min-content;
     width: 200px;
-    background-color: darkorange;
-    display: block;
+    background-color: rgba(171, 153, 158, 0.314);
     margin-bottom: 30px;
     cursor: pointer;
+    font-size: 30px;
+}
+.answer:hover{
+    background-color: rgba(171, 153, 158, 0.641);
 }
 
 #app button {
@@ -37,7 +46,6 @@ body{
     background-color: black;
     color: white;
     cursor: pointer;
-
 }
 
 #app h1 {
@@ -51,4 +59,19 @@ body{
     background-color: rgb(50, 50, 50);
     box-shadow: inset 0 0 5px 5px rgb(19, 20, 19);
 
+}
+#app div {
+    font-size: 30px;
+    margin: 15px;
+
+}
+
+.question{
+    font-size: 40px;
+}
+
+#loading {
+    display: block;
+    font-size: 50px;
+    height: 100px;
 }

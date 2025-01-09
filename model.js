@@ -6,22 +6,22 @@ let numberOfQuestion = 1
 let timeLeft = 10
 let clicked = true
 
+let response
 
 async function fetchQuestions() {
     try{
-        const response = await fetch('https://opentdb.com/api.php?amount=10')
+         response = await fetch('https://opentdb.com/api.php?amount=10')
 
         if (!response.ok){
             throw new Error('Could not fetch resource')
         }
 
         data = await response.json()
+        startScreen()
     }
     catch(err){
-        console.error(err)
+        console.error(err);
+
     }
     
 }
-
-
-
