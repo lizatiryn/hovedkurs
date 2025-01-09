@@ -1,27 +1,33 @@
-const app = document.getElementById('app')
+const app = document.getElementById("app");
 
-let points = 0
-let data
-let numberOfQuestion = 1
-let timeLeft = 10
-let clicked = true
+let points = 0;
+let data;
+let numberOfQuestion = 1;
+let timeLeft = 10;
+let clicked = true;
+let questions = []
 
-let response
-
-async function fetchQuestions() {
-    try{
-         response = await fetch('https://opentdb.com/api.php?amount=10')
-
-        if (!response.ok){
-            throw new Error('Could not fetch resource')
+function fetchQuestions(){
+fetch("https://opentdb.com/api.php?amount=10")
+  .then((res) => {
+    return res.json();
+  })
+  .then((loadedQuestions) => {
+    questions = loadedQuestions.results.map(loadedQuestion => {
+        const formatedQuestion = {
+            question: loadedQuestion.question,
+            correct_answer: loadedQuestion.correct_answer,
+            incorrect_answers: [],
+            answered: 'unanswered'
         }
 
-        data = await response.json()
-        startScreen()
-    }
-    catch(err){
-        console.error(err);
-
-    }
-    
+        for(i = 0; i < loadedQuestion.incorrect_answers.length; i++){
+            formatedQuestion.incorrect_answers[i] = loadedQuestion.incorrect_answers[i]
+        }
+        return formatedQuestion;
+    })
+    startScreen()
+  }).catch(err => {
+    console.error(err)
+  });
 }
