@@ -96,3 +96,7 @@ body{
 	align-self: center;
 	
 }
+
+#add-post span{
+	cursor: pointer;
+}

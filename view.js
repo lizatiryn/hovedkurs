@@ -44,8 +44,7 @@ function addPostView(){
 }
 
 function close(){
-	if(addpost){
 		addpost.remove()
 		adpost = null
-	}
+		homePage()
 }
