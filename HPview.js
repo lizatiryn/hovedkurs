@@ -1,23 +1,30 @@
-
 homePage()
 function homePage(){
 	app.innerHTML = /*html*/ `
 	<div class = 'topbar'>
 	<span onclick = 'homePage()'>Guestbook</span>
 	<span id = 'user-icon'>User</span>
-	<span onclick = ''>Log Out</span>
+	<span onclick = 'loginPage()'>Log Out</span>
 	</div>
-
+	<div id = 'grid-main'>
+		<div>
+		<ul>
+		<li>Friends</li>
+		<li>Private Messages</li>
+		<li>See Your Gallery</li>
+		</ul>
+		</div>
 		<div id = 'feed'>
 		<p>Welcome back, ${currentuser}! <span onclick = 'addPostView()'>Want to share last news?</span></p>
 		${printPosts()}
-		</div>
+	   </div>
+	</div>
 		`
 	}
 	
 	function printPosts(){
 		let html = ''
-		for(let i=0; i < posts.length; i++){
+		for(let i = posts.length - 1; i >= 0; i--){
 			html += /*html*/ `		
 			<div class = 'post'>
 				<div class = 'post-top'><span>${posts[i].user}</span><span> ${posts[i].time}</span></div>
