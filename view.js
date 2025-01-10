@@ -40,7 +40,7 @@ function showAnswers(ind) {
   for (let i = 0; i < amountOfAnswers; i++) {
     if (i === posOfRightAnswer) {
       html += /*html*/ ` 
-              <span class = 'answer' onclick = 'correctAnswer("${questions[ind].correct_answer}", ${ind})'>!${questions[ind].correct_answer}</span>
+              <span class = 'answer' onclick = 'correctAnswer("${questions[ind].correct_answer}", ${ind})'>${questions[ind].correct_answer}</span>
             `;
     } else if (i < amountOfAnswers - 1) {
       html += /*html*/ ` 

@@ -76,14 +76,6 @@ body{
     height: 100px;
 }
 
-.correct{
-    background-color: rgb(97, 180, 97);
-}
-
-.incorrect{
-    background-color: rgb(210, 48, 48);
-}
-
 .show-correct{
     display: flex;
     width: max-content;
@@ -91,4 +83,11 @@ body{
     position: relative;
     top: 100px;
     padding: 10px;
+}
+
+.ran-out-of-time{
+    width: max-content;
+    position: relative;
+    justify-self: center;
+    top: 100px;
 }

@@ -14,7 +14,7 @@ function correctAnswer(answer, ind) {
 }
 
 function ranOutOfTime() {
-    app.innerHTML = /*html*/ `<div>You ran out of time</div>`;
+    app.innerHTML = /*html*/ `<div class = 'ran-out-of-time'>You ran out of time</div>`;
     ++numberOfQuestion
     setTimeout(() => {
       clearInterval(questTimeInterval)
