@@ -51,7 +51,10 @@ body{
 	border-radius: 30px;
 	box-shadow: 20px 20px rgba(0, 0, 0, 0.29);
 }
-
+.post-pic{
+	border-radius: 10px;
+	border: rgb(212, 192, 255) 5px solid;
+}
 .post-top{
 	font-size: 20px;
 	display: grid;
@@ -85,18 +88,47 @@ body{
 #add-post div{
 	display: flex;
 	flex-direction: column;
-	background-color: lightsteelblue;
-	width: 500px;
-	
+	background-color: rgba(176, 196, 222, 0.591);
+	width: 400px;
+	border-radius: 10px;
+	height: 600px;
 }
 
-#add-post div input{
-	width: 90%;
+#add-post textarea{
+	width: 80%;
 	height: 300px;
 	align-self: center;
-	
+	margin: 50px 0;
+	resize: none;
+	padding: 20px;
+	border: rgba(133, 113, 175, 0.548) 5px solid;
+}
+
+#add-post button{
+	width: 150px;
+	align-self: center;
+	font-size: 30px;
+	margin-top: 20px;
+	background-color: aliceblue;
+	border-radius: 30px;
+	cursor: pointer;
+	padding: 5px;
+   position: relative;
 }
 
 #add-post span{
 	cursor: pointer;
+	position: relative;
+	left: 93%;
+	width: 4%;
+	height: 20px;
+	top: 10px;
+}
+label {
+	padding-left: 20px;
+}
+#picture{
+	height: 20px;
+	margin-top: 5px;
+	padding-left: 20px;
 }

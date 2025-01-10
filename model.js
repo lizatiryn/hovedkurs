@@ -10,8 +10,9 @@ let posts = [
 	{
 		user: 'test',
 		message: 'is it alive?',
-		time: '09/01/2025 13:46'
+		time: '09/01/2025 13:46',
+		picturesrc: '',
 	}
 ]
-let addpost = null
+
 let currentuser = users[0].name
