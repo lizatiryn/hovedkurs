@@ -10,31 +10,26 @@ function startScreen() {
     `;
 }
 
+
+
 function showQuestion() {
-  if (numberOfQuestion > 1) {
-    if (questions[numberOfQuestion - 2].answered == "no-time") {
-      ranOutOfTime();
-    }
-  }
-  if (questions[numberOfQuestion - 1].answered == "unanswered") {
-    app.innerHTML = /*html*/ `
-            <div class = 'topbar'><span>Points: ${points}</span> <div id = 'timer'> </div></div>
-            
-            <div class = 'question'>
-            <p>Question ${numberOfQuestion}</p>
+  app.innerHTML = /*html*/ `
+          <div class = 'topbar'><span>Points: ${points}</span> <div id = 'timer'> </div></div>
+          
+          <div class = 'question'>
+          <p>Question ${numberOfQuestion}</p>
 
-            ${questions[numberOfQuestion - 1].question}</div>
+          ${questions[numberOfQuestion - 1].question}</div>
 
-            <div class = 'answers'>
-                ${showAnswers(numberOfQuestion - 1)}            
-            </div>
-        `;
-    setTimeout(() => {
-      questions[numberOfQuestion - 1].answered = "no-time";
-      numberOfQuestion++;
-      showQuestion();
-    }, "10000");
-  }
+          <div class = 'answers'>
+              ${showAnswers(numberOfQuestion - 1)}            
+          </div>
+      `;
+
+  questTimeInterval = setInterval(() => {
+      ranOutOfTime()
+  }, "10000");
+  
 }
 
 function showAnswers(ind) {
@@ -45,15 +40,15 @@ function showAnswers(ind) {
   for (let i = 0; i < amountOfAnswers; i++) {
     if (i === posOfRightAnswer) {
       html += /*html*/ ` 
-              <span class = 'answer' onclick = 'correctAnswer("corr")'>!!!!!!!${questions[ind].correct_answer}</span>
+              <span class = 'answer' onclick = 'correctAnswer("${questions[ind].correct_answer}", ${ind})'>!${questions[ind].correct_answer}</span>
             `;
     } else if (i < amountOfAnswers - 1) {
       html += /*html*/ ` 
-              <span class = 'answer' onclick = 'correctAnswer("incorr")'>${questions[ind].incorrect_answers[i]}</span>
+              <span class = 'answer' onclick = 'correctAnswer("${questions[ind].incorrect_answers[i]}", ${ind})'>${questions[ind].incorrect_answers[i]}</span>
             `;
     } else {
       html += /*html*/ ` 
-              <span class = 'answer' onclick = 'correctAnswer("incorr")'>${questions[ind].incorrect_answers[posOfRightAnswer]}</span>
+              <span class = 'answer' onclick = 'correctAnswer("${questions[ind].incorrect_answers[i]}", ${ind})'>${questions[ind].incorrect_answers[posOfRightAnswer]}</span>
             `;
     }
   }
@@ -63,19 +58,6 @@ function showAnswers(ind) {
 function showResults() {
   app.innerHTML = /*html*/ `
         <div>You got ${points}/10 right. Wanna play again?</div>
-        <button onclick = 'fetchQuestions()'>Yes</button>
+        <button onclick = 'location.reload()'>Yes</button>
     `;
 }
-
-//  {
-//     "type": "multiple",
-//     "difficulty": "medium",
-//     "category": "Mythology",
-//     "question": "Which of these Roman gods doesn&#039;t have a counterpart in Greek mythology?",
-//     "correct_answer": "Janus",
-//     "incorrect_answers": [
-//         "Vulcan",
-//         "Juno",
-//         "Mars"
-//     ]
-// }
