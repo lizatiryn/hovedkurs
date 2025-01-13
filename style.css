@@ -184,3 +184,9 @@ label {
 	color: red;
 	font-size: 20px;
 }
+
+#add-post .message{
+	position: absolute;
+	margin: 40px 20px;
+	font-size: 15px;
+}
