@@ -1,7 +1,7 @@
 body{
 	background-color: aliceblue;
 	margin: 0;
-	
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .topbar{
@@ -55,7 +55,7 @@ body{
 	padding: 10px;
 	border: 3px white solid;
 	border-radius: 30px;
-	box-shadow: 20px 20px rgba(0, 0, 0, 0.29);
+	box-shadow: 20px 20px rgba(0, 0, 0, 0.29); 
 }
 .post-pic{
 	border-radius: 10px;
