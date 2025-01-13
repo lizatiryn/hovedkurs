@@ -14,7 +14,7 @@ body{
     top: 10px;
     height: 10px;
     animation-name: timerani;
-    animation-duration: 10s;
+    animation-duration: 15s;
     animation-timing-function: linear;
     background-color: rgb(141, 78, 115)
 }

@@ -28,7 +28,7 @@ function showQuestion() {
 
   questTimeInterval = setInterval(() => {
       ranOutOfTime()
-  }, "10000");
+  }, "15000");
   
 }
 

@@ -28,5 +28,6 @@ async function fetchQuestions(){
   startScreen()
   }catch(err){
     console.error(err)
+    app.innerHTML = /*html*/ `<div>Failed to fetch data. Refresh the page.</div>`
   }
 }
