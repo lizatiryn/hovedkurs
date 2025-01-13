@@ -1,10 +1,28 @@
-homePage()
+show()
+
+function show(){
+	let found = false
+	for(let i = 0; i < users.length; i++){
+		if (users[i].logged === true){
+			currentuser = users[i].name
+			found = true
+			homePage()
+			break
+		}
+
+	}
+
+	if(!found){
+		loginPage()
+	}
+}
+
 function homePage(){
 	app.innerHTML = /*html*/ `
 	<div class = 'topbar'>
 	<span onclick = 'homePage()'>Guestbook</span>
 	<span id = 'user-icon'>User</span>
-	<span onclick = 'loginPage()'>Log Out</span>
+	<span onclick = 'logOut()'>Log Out</span>
 	</div>
 	<div id = 'grid-main'>
 		<div>
@@ -27,7 +45,7 @@ function homePage(){
 		for(let i = posts.length - 1; i >= 0; i--){
 			html += /*html*/ `		
 			<div class = 'post'>
-				<div class = 'post-top'><span>${posts[i].user}</span><span> ${posts[i].time}</span></div>
+				<div class = 'post-top'><span>${posts[i].user}</span><span> ${posts[i].displaydate}</span></div>
 				<div class = 'post-body'>${posts[i].message}</div>`	
 			if(posts[i].picturesrc != ''){
 				html += /*html*/`
@@ -50,9 +68,9 @@ function addPostView(){
 			<div id = 'add-post'>
 				<div>
 					<span class = 'close'>X</span>
-					<textarea placeholder = 'Share your thoughts'></textarea>
+					<textarea onchange = 'newpostText = this.value' placeholder = 'Share your thoughts'></textarea>
 					<label for='picture'>Share a picture</label>
-					<input id='picture' type = 'file' accept ='.jpeg, .jpg, .png'>
+					<input id='picture' onchange = 'newpostPic = this.value' type = 'file' accept ='.jpeg, .jpg, .png'>
 					<button onclick = 'addPost()'>Add</button>
 				</div>
 			</div>

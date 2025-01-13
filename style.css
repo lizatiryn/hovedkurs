@@ -55,7 +55,8 @@ body{
 	padding: 10px;
 	border: 3px white solid;
 	border-radius: 30px;
-	box-shadow: 20px 20px rgba(0, 0, 0, 0.31); 
+	box-shadow: 20px 20px rgba(0, 0, 0, 0.3); 
+	word-wrap: break-word;
 }
 .post-pic{
 	border-radius: 10px;
@@ -94,7 +95,8 @@ body{
 #add-post div{
 	display: flex;
 	flex-direction: column;
-	background-color: rgba(176, 196, 222, 0.591);
+	background-color: rgb(201, 212, 227);
+	border: rgb(120, 107, 122) 2px solid;
 	width: 400px;
 	border-radius: 10px;
 	height: 600px;
@@ -110,15 +112,18 @@ body{
 	border: rgba(133, 113, 175, 0.548) 5px solid;
 }
 
-#add-post button{
-	width: 150px;
-	align-self: center;
+button{
 	font-size: 30px;
-	margin-top: 20px;
 	background-color: aliceblue;
 	border-radius: 30px;
 	cursor: pointer;
 	padding: 5px;
+}
+
+#add-post button{
+	width: 150px;
+	align-self: center;
+	margin-top: 20px;
    position: relative;
 }
 
@@ -137,4 +142,45 @@ label {
 	height: 20px;
 	margin-top: 5px;
 	padding-left: 20px;
+}
+
+.create-login{
+	color: rgb(255, 110, 132);
+	cursor: pointer;
+}
+
+.login-signup-page{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 30px;
+}
+.login-signup-page input{
+	width: 300px;
+	font-size: 30px;
+	margin-top: 10px;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.login-signup-page div{
+	margin-top: 100px;
+}
+
+.login-signup-page button{
+	margin-top: 20px;
+}
+
+.login-signup-title{
+	text-align: center;
+	width: 300px;
+	border: 5px pink solid;
+	border-radius: 10px;
+}
+
+.message{
+	margin: 0;
+	padding: 0;
+	color: red;
+	font-size: 20px;
 }
