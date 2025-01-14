@@ -28,9 +28,27 @@ body{
 	border-radius: 50%;
 }
 
+#user-icon img{
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 50%;
+}
+
 #grid-main{
 	display: grid;
 	grid-template-columns: 35% auto;
+}
+
+ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 20px;
+}
+
+ul li {
+	cursor: pointer;
 }
 
 #feed{
@@ -55,7 +73,7 @@ body{
 	padding: 10px;
 	border: 3px white solid;
 	border-radius: 30px;
-	box-shadow: 20px 20px rgba(0, 0, 0, 0.3); 
+	box-shadow: 15px 15px rgba(0, 0, 0, 0.3); 
 	word-wrap: break-word;
 }
 .post-pic{
@@ -63,10 +81,14 @@ body{
 	border: rgb(212, 192, 255) 5px solid;
 }
 .post-top{
-	font-size: 20px;
+	font-size: 17px;
 	display: grid;
 	grid-template-columns: auto max-content;
 	padding: 5px;
+}
+
+.post-top span:first-child{
+	cursor: pointer;
 }
 .post-time{
 	display: flex;
@@ -74,14 +96,14 @@ body{
 	align-self: flex-end;
 }
 .post-body{
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .post-bot{
 	align-self: self-end;
 }
 
-#add-post{
+#add-post, #edit-profile{
 	position: absolute;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.08);
@@ -92,7 +114,7 @@ body{
 	height: 100%;
 }
 
-#add-post div{
+#add-post div, #edit-profile div{
 	display: flex;
 	flex-direction: column;
 	background-color: rgb(201, 212, 227);
@@ -100,6 +122,10 @@ body{
 	width: 400px;
 	border-radius: 10px;
 	height: 600px;
+}
+
+#edit-profile div{
+	height: max-content;
 }
 
 #add-post textarea{
@@ -127,7 +153,7 @@ button{
    position: relative;
 }
 
-#add-post span{
+.close{
 	cursor: pointer;
 	position: relative;
 	left: 93%;
@@ -189,4 +215,93 @@ label {
 	position: absolute;
 	margin: 40px 20px;
 	font-size: 15px;
+}
+
+.friend{
+	width: 200px;
+	height: 60px;
+	border: 3px pink solid;
+	border-radius: 25px;
+	font-size: 25px;
+	display: grid;
+	grid-template-columns: 60px auto;
+	text-align: center;
+	align-items: center;
+	padding: 5px;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.684);
+}
+
+.friend img{
+	max-height: 100%!important;
+	max-width: 100%!important;
+	border-radius: 25px;
+	margin: 0!important;
+	border: 3px rgb(187, 146, 160) solid !important;
+
+}
+
+.profile-left{
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-left img{
+	max-width: min(70%, 300px);
+	align-self: center;
+	margin: 50px 0;
+	border: 5px rgb(187, 146, 160) solid;
+	border-radius: 30px;
+}
+
+.profile-view{
+	display: grid;
+	grid-template-columns: 40% auto;
+}
+
+.profile-view button{
+	max-width: 70%;
+	align-self: center;
+}
+
+.profile-username{
+	font-size: 30px;
+	position: relative;
+	align-self: center;
+	top: -20px
+}
+
+.friendbox{
+	margin: 50px;
+}
+.friendbox label{
+	font-size: 25px;
+}
+
+#profile-picture{
+	display: none;
+}
+
+#edit-profile label{
+	height: 55px;
+	text-align: center;
+	justify-content: center;
+	align-self: center;
+	cursor: pointer;
+	font-size: 25px;
+	width: 70%;
+	background-color: aliceblue;
+	border-radius: 30px;
+	border: 1px black solid;
+	margin: 50px 0;
+}
+
+#edit-profile input{
+	width: 70%;
+	margin-top: 20px;
+	align-self: center;
+	font-size: 30px;
+}
+#edit-profile span:last-of-type{
+	margin: 20px 0 0 60px;
 }

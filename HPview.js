@@ -1,10 +1,10 @@
-show();
+profileView('0')
 
 function show() {
   let found = false;
   for (let i = 0; i < users.length; i++) {
     if (users[i].logged === true) {
-      currentuser = users[i].name;
+      currentuser = users[i];
       found = true;
       homePage();
       break;
@@ -16,14 +16,21 @@ function show() {
   }
 }
 
-function homePage() {
-  app.innerHTML = /*html*/ `
+function topbar(){
+	html = /*html*/ `
 	<div class = 'topbar'>
 	<span onclick = 'homePage()'>Guestbook</span>
-	<span id = 'user-icon'>User</span>
+	<span onclick = 'profileView("${currentuser.id}")' id = 'user-icon'><img src='${profilePic(currentuser.name)}'></span>
 	<span onclick = 'logOut()'>Log Out</span>
 	</div>
-	<div id = 'grid-main'>
+	`
+	return html
+}
+
+function homePage() {
+  app.innerHTML = /*html*/ `
+  ${topbar()}
+  <div id = 'grid-main'>
 		<div>
 		<ul>
 		<li>Friends</li>
@@ -32,7 +39,7 @@ function homePage() {
 		</ul>
 		</div>
 		<div id = 'feed'>
-		<p>Welcome back, ${currentuser}! <span onclick = 'addPostView()'>Want to share last news?</span></p>
+		<p>Welcome back, ${currentuser.name}! <span onclick = 'addPostView()'>Want to share last news?</span></p>
 		${printPosts()}
 	   </div>
 	</div>
@@ -44,7 +51,7 @@ function printPosts() {
   for (let i = posts.length - 1; i >= 0; i--) {
     html += /*html*/ `		
 			<div class = 'post'>
-				<div class = 'post-top'><span>${posts[i].user}</span><span> ${posts[i].displaydate}</span></div>
+				<div class = 'post-top'><span onclick = 'profileView("${posts[i].authorID}")'>${posts[i].user}</span><span> ${posts[i].displaydate}</span></div>
 				<div class = 'post-body'>${posts[i].message}</div>`;
     if (posts[i].picturesrc != "") {
       html += /*html*/ `
@@ -82,8 +89,3 @@ function addPostView() {
   }
 }
 
-function close() {
-  console.log("wth");
-  addpost.remove();
-  addpost = null;
-}

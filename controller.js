@@ -14,23 +14,25 @@ function addPost() {
   if (addpostPicture != null || newpostText.length > 0) {
     if (addpostPicture) {
       posts.push({
-        user: currentuser,
+        user: currentuser.name,
         message: newpostText,
         displaydate: formatedDate,
         picturesrc: addpostPicture,
         time: postTime,
+        authorID: currentuser.id
       });
     } else {
       posts.push({
-        user: currentuser,
+        user: currentuser.name,
         message: newpostText,
         displaydate: formatedDate,
         picturesrc: "",
         time: postTime,
+        authorID: currentuser.id
       });
     }
     homePage();
-    newpostPic = null;
+    // newpostPic = null;
     newpostText = "";
     message = ''
   }else{
@@ -40,10 +42,22 @@ function addPost() {
   }
 }
 
+function close() {
+  if(addpost){  
+  addpost.remove();
+  addpost = null;
+  } 
+  if(editprofile){
+    editprofile.remove()
+    editprofile = null
+  }
+
+}
+
 function logOut() {
-  let index = users.findIndex((userObj) => userObj.name == currentuser);
+  let index = users.findIndex((userObj) => userObj.name == currentuser.name);
   users[index].logged = false;
-  currentuser = "";
+  currentuser = null;
   loginPage();
 }
 
@@ -59,7 +73,7 @@ function checkUser() {
       console.log("name ok");
       if (users[i].password == pass) {
         userfound = true;
-        currentuser = users[i].name;
+        currentuser = users[i];
       }
     }
   }
@@ -72,7 +86,7 @@ function checkUser() {
       loginPage();
     }
   } else {
-    let index = users.findIndex((userObj) => userObj.name == currentuser);
+    let index = users.findIndex((userObj) => userObj.name == currentuser.name);
     users[index].logged = true;
     homePage();
     message = "";
@@ -92,8 +106,10 @@ function signUp() {
           name: createusername,
           password: createpassword,
           logged: true,
+          profile_picture_src: 'pics/user.jpg',
+		      friend_list: []
         });
-        currentuser = createusername;
+        currentuser.name = createusername;
         homePage();
       } else {
         message = "Password must at least contain 6 characters.";
@@ -118,4 +134,26 @@ function copyFile() {
   addpostPicture = null;
   let inputPic = document.getElementById("picture");
   addpostPicture = URL.createObjectURL(inputPic.files[0]);
+}
+
+function profilePic(user){
+    for(let i=0; i<users.length; i++){
+      if(users[i].name === user){
+        return users[i].profile_picture_src
+      }
+    }
+}
+
+let 
+
+function editProfile(){
+  newProfilePic = null
+  let inputPic = document.getElementById('profile-picture')
+  newProfilePic = URL.createObjectURL(inputPic.files[0])
+}
+
+function editProfile(){
+  if(newUsername.length >= 4){
+
+  }
 }
