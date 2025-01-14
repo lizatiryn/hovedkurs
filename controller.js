@@ -144,16 +144,46 @@ function profilePic(user){
     }
 }
 
-let 
-
-function editProfile(){
+function changeProfilePicture(){
   newProfilePic = null
   let inputPic = document.getElementById('profile-picture')
   newProfilePic = URL.createObjectURL(inputPic.files[0])
 }
 
 function editProfile(){
+  let index = users.findIndex((userObj) => userObj.name == currentuser.name);
   if(newUsername.length >= 4){
-
+    users[index].name = newUsername;
+    currentuser.name = newUsername;
+  } else if( newUsername.length > 0 && newUsername.length < 4){
+    message = 'New name must contain at least 4 characters'
+    close();
+    editProfileView()
   }
+
+  if(newProfilePic){
+    users[index].profile_picture_src = newProfilePic;
+    currentuser.profile_picture_src = newProfilePic;
+  }
+
+  profileView(currentuser.id);
+  // newpostPic = null;
+  newUsername = "";
+  message = ''
+}
+
+function addDeleteFriend(option, userID){
+  let index = users.findIndex((userObj) => userObj.name == currentuser.name);
+  let indexfriend = users.findIndex((userObj) => userObj.id == userID);
+  // alert(option)
+	if (option == 'Follow'){
+		users[index].friend_list.push(users[indexfriend])
+    currentuser = users[index]
+    // alert('usless pos')
+	} else if(option == 'Unfollow'){
+    let deletefriendID = users[index].friend_list.findIndex((friend) => friend.id == userID)
+    users[index].friend_list.splice(deletefriendID, 1)
+    currentuser = users[index]
+	}
+  profileView(userID)
 }

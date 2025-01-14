@@ -1,4 +1,4 @@
-profileView('0')
+// show()
 
 function show() {
   let found = false;
@@ -16,15 +16,15 @@ function show() {
   }
 }
 
-function topbar(){
-	html = /*html*/ `
+function topbar() {
+  html = /*html*/ `
 	<div class = 'topbar'>
 	<span onclick = 'homePage()'>Guestbook</span>
 	<span onclick = 'profileView("${currentuser.id}")' id = 'user-icon'><img src='${profilePic(currentuser.name)}'></span>
 	<span onclick = 'logOut()'>Log Out</span>
 	</div>
-	`
-	return html
+	`;
+  return html;
 }
 
 function homePage() {
@@ -33,35 +33,62 @@ function homePage() {
   <div id = 'grid-main'>
 		<div>
 		<ul>
-		<li>Friends</li>
-		<li>Private Messages</li>
-		<li>See Your Gallery</li>
+		<li onclick = 'privateMsgView()'>Private Messages</li>
+		<li onclick = 'galleryView()'>See Your Gallery</li>
 		</ul>
 		</div>
 		<div id = 'feed'>
-		<p>Welcome back, ${currentuser.name}! <span onclick = 'addPostView()'>Want to share last news?</span></p>
-		${printPosts()}
+		<p>Welcome back, ${
+      currentuser.name
+    }! <span onclick = 'addPostView()'>Want to share last news?</span></p>
+		${printPosts('home page', -1)}
 	   </div>
 	</div>
 		`;
 }
 
-function printPosts() {
+function printPosts(forView, userID) {
   let html = "";
-  for (let i = posts.length - 1; i >= 0; i--) {
-    html += /*html*/ `		
+  if (forView == "home page") {
+    for (let i = posts.length - 1; i >= 0; i--) {
+      html += /*html*/ `		
 			<div class = 'post'>
 				<div class = 'post-top'><span onclick = 'profileView("${posts[i].authorID}")'>${posts[i].user}</span><span> ${posts[i].displaydate}</span></div>
 				<div class = 'post-body'>${posts[i].message}</div>`;
-    if (posts[i].picturesrc != "") {
-      html += /*html*/ `
+      if (posts[i].picturesrc != "") {
+        html += /*html*/ `
 				<img src = '${posts[i].picturesrc}' class = 'post-pic'>
 				`;
-    }
-    html += /*html*/ `
+      }
+      html += /*html*/ `
 				<div class = 'post-bot'>like comment</div>
 			</div>`;
-  }
+    }
+  } else if( forView == 'profile view'){
+		// let userObjID = users.findIndex((user) => user.id == userID)
+
+	for (let i = posts.length - 1; i >= 0; i--) {
+		if(posts[i].authorID == userID){
+			html += /*html*/ `		
+				<div class = 'post'>
+					<div class = 'post-top'><span onclick = 'profileView("${posts[i].authorID}")'>${posts[i].user}</span><span> ${posts[i].displaydate}</span></div>
+					<div class = 'post-body'>${posts[i].message}</div>`;
+			if (posts[i].picturesrc != "") {
+			  html += /*html*/ `
+					<img src = '${posts[i].picturesrc}' class = 'post-pic'>
+					`;
+			}
+			html += /*html*/ `
+					<div class = 'post-bot'>like comment</div>
+				</div>`;
+		 }
+	  }
+	  if(html == ''){
+		html += /*html*/ `
+		<div>No posts yet</div>
+	</div>`;
+	  }
+	}
   return html;
 }
 
@@ -88,4 +115,3 @@ function addPostView() {
     closeButton.addEventListener("click", close);
   }
 }
-

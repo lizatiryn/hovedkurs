@@ -19,8 +19,6 @@ let users = [
 	},
 ]
 
-users[0].friend_list.push(users[1])
-users[1].friend_list.push(users[0])
 
 let posts = [
 	{
@@ -41,6 +39,46 @@ let posts = [
 	},
 ]
 
+let dialogues = [
+	{
+		userA: users[0],
+		userB: users[1],
+		messages: [
+		]
+	},
+	{
+		userA: users[0],
+		userB: users[1],
+		messages: [
+		]
+	},
+]
+
+dialogues[0].messages.push(			
+	{
+		sender: dialogues[0].userA,
+		message: 'Hello world!',
+		senttime: new Date(2025, 0, 14, 13, 43)
+	},
+	{
+		sender:dialogues[0].userB,
+		message: 'Do you still dream about being a programist? Take pills please.',
+		senttime: new Date(2025, 0, 14, 13, 45)
+	}
+)
+dialogues[1].messages.push(			
+	{
+		sender: dialogues[0].userA,
+		message: 'Hello world!',
+		senttime: new Date(2025, 0, 14, 13, 43)
+	},
+	{
+		sender:dialogues[0].userB,
+		message: 'Do you still dream about being a programist? Take pills please.',
+		senttime: new Date(2025, 0, 14, 13, 45)
+	}
+)
+
 let currentuser = users[0]
 // .name
 // let currentuserID = users[0].id
@@ -57,3 +95,12 @@ let newpostText = ''
 
 let newProfilePic
 let newUsername = ''
+
+
+
+//  TO DO:
+
+// - likes/comments
+// - gallery
+// - save
+// - dialogues

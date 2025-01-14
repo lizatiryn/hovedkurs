@@ -13,14 +13,19 @@ function profileView(userID) {
 				<img src='${profilePic(user.name)}'>
 				<span class = 'profile-username'>${user.name}</span>
 				${returnButtonProfileView(userID)}
-				<div class = 'friendbox'><label>Friends</label><span class = 'friendlist'>${friendList(user)}</span></div>
+				<div class = 'friendbox'><label>Follows</label><span class = 'friendlist'>${friendList(user)}</span></div>
 			</div>
-			<div><span>Posts by ${user.name}</span></div>
+			<div class = 'profile-postby'>
+				<span class ='postby-title'>Posts by ${user.name}</span>
+				<div> ${printPosts('profile view', userID)}</div>
+			</div>
 		</div>
 
 	`;
 }
+let thisuserID
 function returnButtonProfileView(userID){
+	thisuserID = userID
 	let html = ''
 	if (currentuser.id == userID) {
 		html = /*html*/ ` 
@@ -28,7 +33,7 @@ function returnButtonProfileView(userID){
 	  `;
 	 } else{
 		html = /*html*/ ` 
-		  <button onclick = 'addDeleteFriend(this.value)'>${friendAdded(currentuser.id, userID)}</button>
+		  <button onclick = 'addDeleteFriend("${friendAdded(currentuser.id, userID)}", thisuserID)'>${friendAdded(currentuser.id, userID)}</button>
 	  `;
 	}
 	return html
@@ -52,9 +57,9 @@ function friendAdded(curusID, usID){
 			for(let j = 0; j < users.length; j++){
 				if(users[j].id == curusID){
 					if(users[j].friend_list.includes(friend)){
-						return 'Delete a friend'
+						return 'Unfollow'
 					}
-					else return 'Add a friend'
+					else return 'Follow'
 				}
 			}
 		}
@@ -81,3 +86,4 @@ function editProfileView(){
 	const closeButton = editprofile.querySelector(".close");
 	closeButton.addEventListener("click", close);
 }
+
