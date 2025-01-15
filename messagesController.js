@@ -1,4 +1,5 @@
 let htmldialogue = "Choose a dialogue";
+let typedMsg = "";
 
 function sidebarDialogues() {
   let html = "";
@@ -18,12 +19,13 @@ function sidebarDialogues() {
     } else if (currentuser.id == dialogues[i].userB.id) {
     }
   }
+
   return html;
 }
 
 function openDialogue(i) {
   htmldialogue = /*html*/ `
-		<div>
+		<div class = 'dialogue-window'>
 			${messages(i)}
 		
 		</div>
@@ -34,9 +36,70 @@ function openDialogue(i) {
 function messages(i) {
   let html = "";
   for (let j = 0; j < dialogues[i].messages.length; j++) {
-    html += /*html*/ `<div class = 'message'>
-	 
+    if (j === 0) {
+      html += /*html*/ `
+        <div class = 'date-sent'>${dialogues[i].messages[j].senttime
+          .getDate()
+          .toString()}/${
+        dialogues[i].messages[j].senttime.getMonth().toString() + 1
+      }</div>
+      `;
+    }
+    if (
+      j != 0 &&
+      dialogues[i].messages[j].senttime -
+        dialogues[i].messages[j - 1].senttime >
+        86400000
+    ) {
+      html += /*html*/ `
+        <div class = 'date-sent'>${dialogues[i].messages[j].senttime
+          .getDate()
+          .toString()}/${
+        dialogues[i].messages[j].senttime.getMonth().toString() + 1
+      }</div>
+      `;
+    }
+    html += /*html*/ `<div class = 'message-dialogue ${addClass(i, j)}'>
+      <span>${
+        dialogues[i].messages[j].message
+      }</span> <span class = 'time-sent'>${dialogues[i].messages[j].senttime
+      .getHours()
+      .toString()}:${dialogues[i].messages[j].senttime
+      .getMinutes()
+      .toString().padStart(2, '0')}</span>
 		</div>`;
   }
+  html += /*html*/ `
+  <span class = 'send-msg'><input onchange = 'typedMsg = this.value' type = 'text' placeholder = 'Type in your message'><button onclick = 'sendMsg(${i})'>Send</button></span>
+  `;
   return html;
+}
+
+function addClass(i, j) {
+  if (dialogues[i].messages[j].sender.id == currentuser.id) {
+    return "your-msg";
+  } else return "";
+}
+
+function sendMsg(i) {
+  let newMsg;
+  if (typedMsg.length > 0) {
+    if (currentuser.id === dialogues[i].userA.id) {
+      newMsg = {
+        sender: dialogues[i].userA,
+        message: typedMsg,
+        senttime: new Date(),
+      };
+    } else if (currentuser.id === dialogues[i].userB.id) {
+      newMsg = {
+        sender: dialogues[i].userB,
+        message: typedMsg,
+        senttime: new Date(),
+      };
+    }
+    dialogues[i].messages.push(newMsg);
+    openDialogue(i);
+    typedMsg = "";
+  }
+  else return
 }

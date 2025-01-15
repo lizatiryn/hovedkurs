@@ -4,7 +4,7 @@ function privateMsgView(){
 	${topbar()}
 		<div class= 'private-msg-box'>
 			<aside>${sidebarDialogues()}</aside>
-			<div>${htmldialogue}</div>
+			<div class = 'dialogue-window'><span>${htmldialogue}</span></div>
 		</div>
 	`
 }

@@ -368,3 +368,50 @@ label {
 	height: 37px;
 	overflow: hidden;
 }
+
+.message-dialogue {
+	position: relative;
+	width: max-content;
+	height: max-content;
+	border: 2px black solid;
+	border-radius: 30px;
+	background-image: linear-gradient(to bottom right,rgb(247, 224, 228), rgb(234, 184, 234));
+	font-size: 20px;
+	display: grid;
+}
+.message-dialogue span:first-child{
+	padding: 2px 5px;
+}
+
+.date-sent{
+	width: max-content;
+	height: max-content;
+	border-radius: 30px;
+	align-self: center;
+	background-color: rgba(0, 0, 0, 0.122);
+}
+.dialogue-window{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.your-msg{
+	align-self: flex-end;
+}
+.time-sent{
+	font-size: 15px;
+	justify-self: end;
+	padding-right: 5px;
+}
+.send-msg{
+	width: 68%;
+	position: absolute;
+	bottom: 5px;
+	display: grid;
+	grid-template-columns: 80% 20%;
+}
+.send-msg input{
+	border-radius: 30px;
+	padding: 5px;
+	font-size: 20px;
+}

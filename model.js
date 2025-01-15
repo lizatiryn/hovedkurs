@@ -47,7 +47,7 @@ let dialogues = [
 		]
 	},
 	{
-		userA: users[0],
+		userA: users[1],
 		userB: users[1],
 		messages: [
 		]
@@ -58,7 +58,7 @@ dialogues[0].messages.push(
 	{
 		sender: dialogues[0].userA,
 		message: 'Hello world!',
-		senttime: new Date(2025, 0, 14, 13, 43)
+		senttime: new Date(2025, 0, 13, 13, 43)
 	},
 	{
 		sender:dialogues[0].userB,
@@ -66,6 +66,7 @@ dialogues[0].messages.push(
 		senttime: new Date(2025, 0, 14, 13, 45)
 	}
 )
+
 dialogues[1].messages.push(			
 	{
 		sender: dialogues[0].userA,
