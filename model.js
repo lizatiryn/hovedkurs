@@ -102,6 +102,5 @@ let newUsername = ''
 //  TO DO:
 
 // - likes/comments
-// - gallery
 // - save
-// - dialogues
+// - dialogues (you need to be able to start dialogue and go from dialogue to a profule)
