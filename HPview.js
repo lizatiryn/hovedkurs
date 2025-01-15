@@ -1,4 +1,4 @@
-// show()
+show()
 
 function show() {
   let found = false;

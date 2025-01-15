@@ -1,4 +1,4 @@
-galleryView();
+// galleryView();
 function galleryView() {
   app.innerHTML = /*html*/ `
 		${topbar()}

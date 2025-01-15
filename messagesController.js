@@ -6,7 +6,7 @@ function sidebarDialogues() {
   for (let i = 0; i < dialogues.length; i++) {
     if (currentuser.id == dialogues[i].userA.id) {
       html += /*html*/ `
-				<div onclick = 'openDialogue(${i})' class = 'dialogue-preview'><img src = '${
+				<div onclick = 'openDialogue(${i}, ${dialogues[i].userB.id})' class = 'dialogue-preview'><img src = '${
         dialogues[i].userB.profile_picture_src
       }'> <div><span>${
         dialogues[i].userB.name
@@ -17,15 +17,33 @@ function sidebarDialogues() {
       }</span></div></div>
 			`;
     } else if (currentuser.id == dialogues[i].userB.id) {
+      html += /*html*/ `
+      <div onclick = 'openDialogue(${i}, ${dialogues[i].userA.id})' class = 'dialogue-preview'><img src = '${
+      dialogues[i].userA.profile_picture_src
+    }'> <div><span>${
+      dialogues[i].userA.name
+    }</span><span class = 'message-preview'>${
+      dialogues[i].messages[dialogues[i].messages.length - 1].sender.name
+    }: ${
+      dialogues[i].messages[dialogues[i].messages.length - 1].message
+    }</span></div></div>
+    `;
     }
   }
 
   return html;
 }
 
-function openDialogue(i) {
+function openDialogue(i, anotherUserID) {
+  let anotherUser = users[users.findIndex((user) => user.id == anotherUserID)]
   htmldialogue = /*html*/ `
-		<div class = 'dialogue-window'>
+    <div class = 'another-user'><img src = '${
+      anotherUser.profile_picture_src
+    }'> <span>${
+      anotherUser.name
+    }</span></div>
+
+		<div class = 'dialogue-window-box'>
 			${messages(i)}
 		
 		</div>
@@ -83,6 +101,7 @@ function addClass(i, j) {
 
 function sendMsg(i) {
   let newMsg;
+  let anotherUser
   if (typedMsg.length > 0) {
     if (currentuser.id === dialogues[i].userA.id) {
       newMsg = {
@@ -90,15 +109,17 @@ function sendMsg(i) {
         message: typedMsg,
         senttime: new Date(),
       };
+      anotherUser = dialogues[i].userB
     } else if (currentuser.id === dialogues[i].userB.id) {
       newMsg = {
         sender: dialogues[i].userB,
         message: typedMsg,
         senttime: new Date(),
       };
+      anotherUser = dialogues[i].userA
     }
     dialogues[i].messages.push(newMsg);
-    openDialogue(i);
+    openDialogue(i, anotherUser.id);
     typedMsg = "";
   }
   else return

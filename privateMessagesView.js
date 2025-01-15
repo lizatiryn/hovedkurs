@@ -1,4 +1,4 @@
-// privateMsgView()
+privateMsgView()
 function privateMsgView(){
 	app.innerHTML = /*html*/`
 	${topbar()}

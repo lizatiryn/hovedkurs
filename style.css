@@ -390,10 +390,50 @@ label {
 	align-self: center;
 	background-color: rgba(0, 0, 0, 0.122);
 }
-.dialogue-window{
+.dialogue-window {
+	display: grid;
+	grid-template-rows: 200px auto;
+	gap: 10px;
+	position: relative; /* To contain the sticky child */
+	overflow-x: hidden;
+}
+
+.dialogue-window-box {
+	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	overflow-y: auto;
+
+}
+
+.send-msg{
+	width: 70%;
+	position: fixed;
+	bottom: 5px;
+	display: grid;
+	grid-template-columns: 78% 20%;
+	background-color: aliceblue;
+}
+ .another-user {
+	display: grid;
+	grid-template-columns: 60px auto;
+	align-items: center;
+	border-bottom: 1px pink solid;
+	height: max-content;
+	width: 100%;
+	margin-bottom: 5px;
+	position: sticky; 
+	top: -5px; 
+	z-index: 1; 
+	background-color: aliceblue;
+	margin: 0;
+}
+
+.another-user img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 .your-msg{
 	align-self: flex-end;
@@ -402,13 +442,6 @@ label {
 	font-size: 15px;
 	justify-self: end;
 	padding-right: 5px;
-}
-.send-msg{
-	width: 68%;
-	position: absolute;
-	bottom: 5px;
-	display: grid;
-	grid-template-columns: 80% 20%;
 }
 .send-msg input{
 	border-radius: 30px;
@@ -454,4 +487,17 @@ label {
 		grid-template-columns: 450px 450px!important;
 		justify-self: center;
 	 }
+}
+
+ *::-webkit-scrollbar {
+	width: 0.7em;
+ }
+
+ *::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+ }
+
+ *::-webkit-scrollbar-thumb {
+	background-color: pink;
+	outline: 1px solid rgb(255, 255, 255);
  }

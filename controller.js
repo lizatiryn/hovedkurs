@@ -32,6 +32,7 @@ function addPost() {
       });
     }
     homePage();
+    close();
     // newpostPic = null;
     newpostText = "";
     message = ''
