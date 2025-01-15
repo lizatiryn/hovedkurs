@@ -36,7 +36,7 @@ let posts = [
 		picturesrc: 'pics/referance.png',
 		time: new Date(2025, 0, 9, 13, 47),
 		authorID: 0
-	},
+	},	
 ]
 
 let dialogues = [

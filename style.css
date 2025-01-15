@@ -415,3 +415,43 @@ label {
 	padding: 5px;
 	font-size: 20px;
 }
+.gallerypage-body{
+	display: grid;
+	grid-template-rows: 150px auto;
+}
+.gallerypage-body h1{
+	align-self: center;
+	justify-self: center;
+}
+.gallerydiv {
+	width: 100vh;
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 350px 350px 350px;
+	justify-self: center;
+	align-self: center;
+ }
+ 
+ .image-container-gallery {
+	flex: 0 0 auto; /* Prevent containers from shrinking or growing */
+	width: 300px; /* Set a fixed width for each image container */
+	justify-self: center;
+	border: 3px plum solid;
+	border-radius: 20px;
+ }
+ 
+ .image-container-gallery img {
+	width: 100%; /* Make the image fill the container */
+	height: 100%; /* Ensure the image takes up the full height of the container */
+	object-fit: fill; /* Keep the aspect ratio of the image, cropping as needed */
+	border-radius: 20px;
+ }
+ @media screen and (max-width: 1200px){
+	.gallerydiv {
+		width: 100vh;
+		display: grid;
+		gap: 10px;
+		grid-template-columns: 450px 450px!important;
+		justify-self: center;
+	 }
+ }
