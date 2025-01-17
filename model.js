@@ -5,7 +5,7 @@ let users = [
 		id: 0,
 		name: 'test',
 		password: '1234', 
-		logged: false,
+		logged: true,
 		profile_picture_src: 'pics/user.jpg',
 		friend_list: []
 	},
@@ -13,12 +13,13 @@ let users = [
 		id: 1,
 		name: 'test2',
 		password: '1234', 
-		logged: true,
+		logged: false,
 		profile_picture_src: 'pics/user.jpg',
 		friend_list: []
 	},
 ]
 
+users[0].friend_list.push(users[1])
 
 let posts = [
 	{
@@ -27,7 +28,8 @@ let posts = [
 		displaydate: '09/01/2025 13:46',
 		picturesrc: '',
 		time: new Date(2025, 0, 9, 13, 46),
-		authorID: 0
+		authorID: 0,
+		likes: []
 	},
 	{
 		user: 'test',
@@ -35,7 +37,8 @@ let posts = [
 		displaydate: '09/01/2025 13:47',
 		picturesrc: 'pics/referance.png',
 		time: new Date(2025, 0, 9, 13, 47),
-		authorID: 0
+		authorID: 0,
+		likes: []
 	},	
 ]
 
@@ -80,7 +83,7 @@ let dialogues = [
 // 	}
 // )
 
-let currentuser = users[1]
+let currentuser = users[users.findIndex((user) => user.logged === true)]
 // .name
 // let currentuserID = users[0].id
 
@@ -97,6 +100,7 @@ let newpostText = ''
 let newProfilePic
 let newUsername = ''
 
+let search = ''
 
 
 //  TO DO:

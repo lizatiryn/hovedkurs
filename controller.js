@@ -19,7 +19,8 @@ function addPost() {
         displaydate: formatedDate,
         picturesrc: addpostPicture,
         time: postTime,
-        authorID: currentuser.id
+        authorID: currentuser.id,
+        likes: [],
       });
     } else {
       posts.push({
@@ -28,31 +29,55 @@ function addPost() {
         displaydate: formatedDate,
         picturesrc: "",
         time: postTime,
-        authorID: currentuser.id
+        authorID: currentuser.id,
+        likes: [],
       });
     }
     homePage();
     close();
     // newpostPic = null;
     newpostText = "";
-    message = ''
-  }else{
-    message = 'You cannot add an empty post :('
+    message = "";
+  } else {
+    message = "You cannot add an empty post :(";
     close();
-    addPostView()
+    addPostView();
   }
 }
 
 function close() {
-  if(addpost){  
-  addpost.remove();
-  addpost = null;
-  } 
-  if(editprofile){
-    editprofile.remove()
-    editprofile = null
+  if (addpost) {
+    addpost.remove();
+    addpost = null;
   }
+  if (editprofile) {
+    editprofile.remove();
+    editprofile = null;
+  }
+}
 
+function findUser() {
+  html = ''
+  if(search.length == 0){
+    return
+  }
+  app.innerHTML += /*html*/ `
+    <div id = 'search-results'>
+      `;
+  for (i = 0; i < users.length; i++) {
+    if (users[i].name.toLowerCase() == search.toLowerCase().trim()) {
+       html += /*html*/ `
+            <div onclick = 'profileView(${users[i].id})'>${users[i].name}</div>
+          
+          `;
+    }
+  }
+  document.getElementById("search-results").innerHTML = html
+
+  app.innerHTML += ` </div>
+  
+  `;
+  search = ''
 }
 
 function logOut() {
@@ -107,8 +132,8 @@ function signUp() {
           name: createusername,
           password: createpassword,
           logged: true,
-          profile_picture_src: 'pics/user.jpg',
-		      friend_list: []
+          profile_picture_src: "pics/user.jpg",
+          friend_list: [],
         });
         currentuser.name = createusername;
         homePage();
@@ -137,32 +162,32 @@ function copyFile() {
   addpostPicture = URL.createObjectURL(inputPic.files[0]);
 }
 
-function profilePic(user){
-    for(let i=0; i<users.length; i++){
-      if(users[i].name === user){
-        return users[i].profile_picture_src
-      }
+function profilePic(user) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].name === user) {
+      return users[i].profile_picture_src;
     }
+  }
 }
 
-function changeProfilePicture(){
-  newProfilePic = null
-  let inputPic = document.getElementById('profile-picture')
-  newProfilePic = URL.createObjectURL(inputPic.files[0])
+function changeProfilePicture() {
+  newProfilePic = null;
+  let inputPic = document.getElementById("profile-picture");
+  newProfilePic = URL.createObjectURL(inputPic.files[0]);
 }
 
-function editProfile(){
+function editProfile() {
   let index = users.findIndex((userObj) => userObj.name == currentuser.name);
-  if(newUsername.length >= 4){
+  if (newUsername.length >= 4) {
     users[index].name = newUsername;
     currentuser.name = newUsername;
-  } else if( newUsername.length > 0 && newUsername.length < 4){
-    message = 'New name must contain at least 4 characters'
+  } else if (newUsername.length > 0 && newUsername.length < 4) {
+    message = "New name must contain at least 4 characters";
     close();
-    editProfileView()
+    editProfileView();
   }
 
-  if(newProfilePic){
+  if (newProfilePic) {
     users[index].profile_picture_src = newProfilePic;
     currentuser.profile_picture_src = newProfilePic;
   }
@@ -170,21 +195,43 @@ function editProfile(){
   profileView(currentuser.id);
   // newpostPic = null;
   newUsername = "";
-  message = ''
+  message = "";
 }
 
-function addDeleteFriend(option, userID){
+function addDeleteFriend(option, userID) {
   let index = users.findIndex((userObj) => userObj.name == currentuser.name);
   let indexfriend = users.findIndex((userObj) => userObj.id == userID);
   // alert(option)
-	if (option == 'Follow'){
-		users[index].friend_list.push(users[indexfriend])
-    currentuser = users[index]
+  if (option == "Follow") {
+    users[index].friend_list.push(users[indexfriend]);
+    currentuser = users[index];
     // alert('usless pos')
-	} else if(option == 'Unfollow'){
-    let deletefriendID = users[index].friend_list.findIndex((friend) => friend.id == userID)
-    users[index].friend_list.splice(deletefriendID, 1)
-    currentuser = users[index]
-	}
-  profileView(userID)
+  } else if (option == "Unfollow") {
+    let deletefriendID = users[index].friend_list.findIndex(
+      (friend) => friend.id == userID
+    );
+    users[index].friend_list.splice(deletefriendID, 1);
+    currentuser = users[index];
+  }
+  profileView(userID);
 }
+
+function like(i) {
+  if (
+    posts[i].likes.indexOf(
+      users[users.findIndex((user) => user.id == currentuser.id)]
+    )
+  ) {
+    posts[i].likes.push(
+      users[users.findIndex((user) => user.id == currentuser.id)]
+    );
+  }
+  else{
+    posts[i].likes.splice(
+      posts[i].likes.indexOf(users[users.findIndex((user) => user.id == currentuser.id)], 1)
+    );
+  }
+  show()
+}
+
+function addComment(i) {}

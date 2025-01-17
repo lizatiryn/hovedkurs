@@ -7,15 +7,32 @@ body{
 .topbar{
 	display: grid;
 	align-items: center;
-	grid-template-columns: auto max-content max-content;
+	grid-template-columns: 30% 40% 10% 10% 10%;
 	height: 70px;
 	border-bottom: 2px black solid;
+	justify-content: end;
 }
-
 .topbar span{
 	margin: 10px;
 	cursor: pointer;
-	
+}
+.topbar button{
+	font-size: 20px;
+}
+.search{
+	width: 100%!important;
+	display: inline;
+	height: 80%;
+	font-size: 20px;
+	border-radius: 30px;
+	padding: 5px;
+}
+
+#search-results{
+	display: absolute;
+	width: 500px;
+	height: 500px;
+	background-color: darkgrey;
 }
 
 #user-icon{
@@ -26,6 +43,7 @@ body{
 	width: 50px;
 	border: 2px black solid;
 	border-radius: 50%;
+	justify-self: end;
 }
 
 #user-icon img{
@@ -479,6 +497,13 @@ label {
 	object-fit: fill; /* Keep the aspect ratio of the image, cropping as needed */
 	border-radius: 20px;
  }
+
+.like, .comment{
+	cursor: pointer;
+}
+
+
+
  @media screen and (max-width: 1200px){
 	.gallerydiv {
 		width: 100vh;
@@ -501,3 +526,4 @@ label {
 	background-color: pink;
 	outline: 1px solid rgb(255, 255, 255);
  }
+
