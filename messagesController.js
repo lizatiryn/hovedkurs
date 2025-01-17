@@ -4,6 +4,9 @@ let typedMsg = "";
 function sidebarDialogues() {
   let html = "";
   for (let i = 0; i < dialogues.length; i++) {
+    if(dialogues[i].messages.length > 0){
+
+
     if (currentuser.id == dialogues[i].userA.id) {
       html += /*html*/ `
 				<div onclick = 'openDialogue(${i}, ${dialogues[i].userB.id})' class = 'dialogue-preview'><img src = '${
@@ -30,29 +33,43 @@ function sidebarDialogues() {
     `;
     }
   }
+  }
 
   return html;
 }
 
 function openDialogue(i, anotherUserID) {
   let anotherUser = users[users.findIndex((user) => user.id == anotherUserID)]
+  
   htmldialogue = /*html*/ `
-    <div class = 'another-user'><img src = '${
+    <div onclick = 'profileView(${anotherUserID})' class = 'another-user'><img src = '${
       anotherUser.profile_picture_src
     }'> <span>${
       anotherUser.name
     }</span></div>
 
 		<div class = 'dialogue-window-box'>
-			${messages(i)}
+			${messages(i, anotherUserID)}
 		
 		</div>
 	`;
   privateMsgView();
 }
 
-function messages(i) {
+function messages(i, anotherUserID) {
   let html = "";
+  if(i == -1){
+    dialogues.push({
+      userA: users[users.findIndex((user) => user.id == currentuser.id)],
+      userB: users[users.findIndex((user) => user.id == anotherUserID)],
+      messages: []
+    })
+    i = dialogues.length - 1
+    html = /*html*/ `
+    <span class = 'send-msg'><input onchange = 'typedMsg = this.value' type = 'text' placeholder = 'Type in your message'><button onclick = 'sendMsg(${i})'>Send</button></span>
+    `;
+    return html;
+  }
   for (let j = 0; j < dialogues[i].messages.length; j++) {
     if (j === 0) {
       html += /*html*/ `

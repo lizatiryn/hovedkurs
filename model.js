@@ -5,7 +5,7 @@ let users = [
 		id: 0,
 		name: 'test',
 		password: '1234', 
-		logged: true,
+		logged: false,
 		profile_picture_src: 'pics/user.jpg',
 		friend_list: []
 	},
@@ -13,7 +13,7 @@ let users = [
 		id: 1,
 		name: 'test2',
 		password: '1234', 
-		logged: false,
+		logged: true,
 		profile_picture_src: 'pics/user.jpg',
 		friend_list: []
 	},
@@ -40,47 +40,47 @@ let posts = [
 ]
 
 let dialogues = [
-	{
-		userA: users[0],
-		userB: users[1],
-		messages: [
-		]
-	},
-	{
-		userA: users[1],
-		userB: users[1],
-		messages: [
-		]
-	},
+	// {
+	// 	userA: users[0],
+	// 	userB: users[1],
+	// 	messages: [
+	// 	]
+	// },
+	// {
+	// 	userA: users[1],
+	// 	userB: users[1],
+	// 	messages: [
+	// 	]
+	// },
 ]
 
-dialogues[0].messages.push(			
-	{
-		sender: dialogues[0].userA,
-		message: 'Hello world!',
-		senttime: new Date(2025, 0, 13, 13, 43)
-	},
-	{
-		sender:dialogues[0].userB,
-		message: 'Do you still dream about being a programist? Take pills please.',
-		senttime: new Date(2025, 0, 14, 13, 45)
-	}
-)
+// dialogues[0].messages.push(			
+// 	{
+// 		sender: dialogues[0].userA,
+// 		message: 'Hello world!',
+// 		senttime: new Date(2025, 0, 13, 13, 43)
+// 	},
+// 	{
+// 		sender:dialogues[0].userB,
+// 		message: 'Do you still dream about being a programist? Take pills please.',
+// 		senttime: new Date(2025, 0, 14, 13, 45)
+// 	}
+// )
 
-dialogues[1].messages.push(			
-	{
-		sender: dialogues[0].userA,
-		message: 'Hello world!',
-		senttime: new Date(2025, 0, 14, 13, 43)
-	},
-	{
-		sender:dialogues[0].userB,
-		message: 'Do you still dream about being a programist? Take pills please.',
-		senttime: new Date(2025, 0, 14, 13, 45)
-	}
-)
+// dialogues[1].messages.push(			
+// 	{
+// 		sender: dialogues[0].userA,
+// 		message: 'Hello world!',
+// 		senttime: new Date(2025, 0, 14, 13, 43)
+// 	},
+// 	{
+// 		sender:dialogues[0].userB,
+// 		message: 'Do you still dream about being a programist? Take pills please.',
+// 		senttime: new Date(2025, 0, 14, 13, 45)
+// 	}
+// )
 
-let currentuser = users[0]
+let currentuser = users[1]
 // .name
 // let currentuserID = users[0].id
 
@@ -104,3 +104,5 @@ let newUsername = ''
 // - likes/comments
 // - save
 // - dialogues (you need to be able to start dialogue and go from dialogue to a profule)
+
+// .match(/^[a-zA-Z0-9]+$/)

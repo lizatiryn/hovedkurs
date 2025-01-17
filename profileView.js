@@ -34,6 +34,7 @@ function returnButtonProfileView(userID){
 	 } else{
 		html = /*html*/ ` 
 		  <button onclick = 'addDeleteFriend("${friendAdded(currentuser.id, userID)}", thisuserID)'>${friendAdded(currentuser.id, userID)}</button>
+		  <button onclick = 'openDialogue(-1, ${userID})'>Send a message</button>
 	  `;
 	}
 	return html
