@@ -20,7 +20,7 @@ function addPost() {
         picturesrc: addpostPicture,
         time: postTime,
         authorID: currentuser.id,
-        likes: [],
+        likes: []
       });
     } else {
       posts.push({
@@ -30,7 +30,7 @@ function addPost() {
         picturesrc: "",
         time: postTime,
         authorID: currentuser.id,
-        likes: [],
+        likes: []
       });
     }
     homePage();
@@ -62,21 +62,21 @@ function findUser() {
     return
   }
   app.innerHTML += /*html*/ `
-    <div id = 'search-results'>
+    <div id = 'search-results'> </div>
       `;
   for (i = 0; i < users.length; i++) {
-    if (users[i].name.toLowerCase() == search.toLowerCase().trim()) {
+    if (users[i].name.toLowerCase().includes(search.toLowerCase().trim())) {
        html += /*html*/ `
-            <div onclick = 'profileView(${users[i].id})'>${users[i].name}</div>
+            <div onclick = 'profileView(${users[i].id})'> <img src = '${users[i].profile_picture_src}'> <span>${users[i].name}</span></div>
           
           `;
+    }else{
+      html = ''
     }
   }
   document.getElementById("search-results").innerHTML = html
 
-  app.innerHTML += ` </div>
-  
-  `;
+
   search = ''
 }
 
@@ -234,4 +234,4 @@ function like(i) {
   show()
 }
 
-function addComment(i) {}
+

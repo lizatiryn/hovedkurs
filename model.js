@@ -105,8 +105,6 @@ let search = ''
 
 //  TO DO:
 
-// - likes/comments
 // - save
-// - dialogues (you need to be able to start dialogue and go from dialogue to a profule)
 
 // .match(/^[a-zA-Z0-9]+$/)

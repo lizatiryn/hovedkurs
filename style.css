@@ -29,12 +29,27 @@ body{
 }
 
 #search-results{
-	display: absolute;
-	width: 500px;
-	height: 500px;
-	background-color: darkgrey;
+	position: absolute;
+	width: 39%;
+	height: max-content;
+	background-color: rgba(155, 157, 177, 0.707);
+	top: 55px;
+	right: 30%;
+	border-radius: 20px;
+}
+#search-results div{
+	display: flex;
+	font-size: 25px;
+	gap: 5px;
+	align-items: center;
+	padding: 5px;
+	cursor: pointer;
 }
 
+#search-results img{
+	height: 50px;
+	border-radius: 30px;
+}
 #user-icon{
 	display: flex;
 	justify-content: center;
